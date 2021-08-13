@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task3</title>
+</head>
+<body>
+    <script>
+        const obj=new Object();
+        obj.a='Sergey';
+        obj.b=27;
+        obj.c='Kyiv';
+        obj.d='ukr';
+
+        Object.prototype.toString= function objToString(){
+            const ret='My name is '+ this.a+ ' I\'m '+ this.b+'y.o '+'I\'m from '+this.c+' '+this.d;
+            return ret;
+        }
+        
+        document.write(obj.toString());
+    </script>
+</body>
+</html>

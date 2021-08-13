@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task2t</title>
+    <script>
+        function Human(name, gender, age) {
+                (this.name = name), (this.gender = gender), (this.age = age),
+                this.sayHi=function(){
+                    document.write(`Hi, my name is ${this.name}`);
+                }
+                this.sayYourAge=function(){
+                    document.write(`I\'m ${this.age} years old`);
+                }
+            }
+
+            Human.planetCitizen = 'Earth';
+            Human.dayStart = function(){
+                document.write('my day starts with brushing my teeth');
+            }
+
+            const alex = new Human("Alex", "male", 23);
+            const oleg = new Human("Oleg", "male", 32);
+            const stepan = new Human("Stepan", "male", 40);
+            const olga = new Human("Olga", "female", 18);
+            const humans = [alex, oleg, stepan, olga];
+
+            Human.dayStart();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

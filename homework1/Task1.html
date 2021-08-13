@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Task1</title>
+    </head>
+    <body>
+        <script>
+            function Human(name, gender, age) {
+                (this.name = name), (this.gender = gender), (this.age = age);
+            }
+            const alex = new Human("Alex", "male", 23);
+            const oleg = new Human("Oleg", "male", 32);
+            const stepan = new Human("Stepan", "male", 40);
+            const olga = new Human("Olga", "female", 18);
+            const humans = [alex, oleg, stepan, olga];
+
+            function byFieldDecrease(field) {
+                return (a, b) => (a[field] < b[field] ? 1 : -1);
+            }
+            function byFieldIncrease(field) {
+                return (a, b) => (a[field] > b[field] ? 1 : -1);
+            }
+
+            document.write(JSON.stringify(humans.sort(byFieldDecrease("age"))));
+            document.write("<br>");
+            document.write(JSON.stringify(humans.sort(byFieldIncrease("age"))));
+            const y=alex.toString();
+            console.log(y);
+        </script>
+    </body>
+</html>
