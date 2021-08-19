@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+
+            function HamburgerException (message) {
+                this.message=message;
+                this.name='HamburgerException'
+            }
+
+                Hamburger.SIZE_SMALL = {
+                    name:'small',
+                    price: 50,
+                    cal: 20
+                };
+                Hamburger.SIZE_LARGE = {
+                    name:'big',
+                    price: 100,
+                    cal: 40
+                };
+                Hamburger.STUFFING_CHEESE = {
+                    name:'cheese',
+                    price: 10,
+                    cal: 20
+                };
+                Hamburger.STUFFING_SALAD = {
+                    name:'salad',
+                    price: 20,
+                    cal: 5
+                };
+                Hamburger.STUFFING_POTATO = {
+                    name:'potato',
+                    price: 15,
+                    cal: 10
+                };
+                Hamburger.TOPPING_MAYO = {
+                    name:'mayo',
+                    price: 15,
+                    cal: 0
+                };
+                Hamburger.TOPPING_SPICE = {
+                    name:'spice',
+                    price: 20,
+                    cal: 5
+                };
+
+            function Hamburger(size,stuffing){
+                this.size=size,
+                this.stuffing=stuffing
+            }
+
+            Hamburger.prototype.addTopping = function (topping){    
+                    if(this.topping==undefined){
+                        this.topping=topping
+                    }else this.topping2=topping;
+                       
+        }
+
+            Hamburger.prototype.removeTopping = function (topping){
+                if (this.topping ==topping){
+                    delete this.topping
+                }else delete this.topping2;
+            }
+
+            Hamburger.prototype.getToppings = function (){
+
+                return arr;
+            }
+
+            Hamburger.prototype.getSize = function (){
+                if (this.size==Hamburger.SIZE_LARGE){
+                    return 'У вас большой бургер'
+                }else return 'У вас маленький бургер';
+            }
+
+            Hamburger.prototype.getStuffing = function (){
+                return null;
+            }
+
+            Hamburger.prototype.calculatePrice = function (){
+                return sum;
+            }
+
+            Hamburger.prototype.calculateCalories = function (){
+                return;
+            }
+
+            let ham= new Hamburger(Hamburger.SIZE_LARGE,Hamburger.STUFFING_CHEESE);
+            ham.addTopping(Hamburger.TOPPING_SPICE);
+            ham.addTopping(Hamburger.TOPPING_MAYO);
+            ham.removeTopping(Hamburger.TOPPING_SPICE);
+            console.log(ham.getSize());
+            ham.calculatePrice();
+            console.log(ham);
+
+        </script>
+    </body>
+</html>
