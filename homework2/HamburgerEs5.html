@@ -40,20 +40,12 @@
                     cal: 10
                 };
                 Hamburger.TOPPING_MAYO = {
-<<<<<<< HEAD
                     name:'Hamburger.TOPPING_MAYO',
-=======
-                    name:'mayo',
->>>>>>> 9d203d0fa9543850bf48635da2ff58b3cfa7158e
                     price: 15,
                     cal: 0
                 };
                 Hamburger.TOPPING_SPICE = {
-<<<<<<< HEAD
                     name:'Hamburger.TOPPING_SPICE',
-=======
-                    name:'spice',
->>>>>>> 9d203d0fa9543850bf48635da2ff58b3cfa7158e
                     price: 20,
                     cal: 5
                 };
@@ -63,24 +55,15 @@
                 this.stuffing=stuffing
             }
 
-<<<<<<< HEAD
             Hamburger.prototype.addTopping = function (topping){   
                     if(this.topping==undefined){
                         this.topping=topping
                     }else this.topping2=topping;
                                       
-=======
-            Hamburger.prototype.addTopping = function (topping){    
-                    if(this.topping==undefined){
-                        this.topping=topping
-                    }else this.topping2=topping;
-                       
->>>>>>> 9d203d0fa9543850bf48635da2ff58b3cfa7158e
         }
 
             Hamburger.prototype.removeTopping = function (topping){
                 if (this.topping ==topping){
-<<<<<<< HEAD
                     delete this.topping;
                 } else throw new HamburgerException('нет топинга для удаления');
                 }
@@ -93,14 +76,6 @@
                 }if(this.topping2 !=null){
                     arr.push(this.topping2.name);
                 }
-=======
-                    delete this.topping
-                }else delete this.topping2;
-            }
-
-            Hamburger.prototype.getToppings = function (){
-
->>>>>>> 9d203d0fa9543850bf48635da2ff58b3cfa7158e
                 return arr;
             }
 
@@ -111,7 +86,6 @@
             }
 
             Hamburger.prototype.getStuffing = function (){
-<<<<<<< HEAD
 
                 return `Ваша начинка ${this.stuffing.name}`;
             }
@@ -122,17 +96,10 @@
                     sum= this.size.price + this.stuffing.price+this.topping.price+this.topping2.price;
                 }else sum= this.size.price + this.stuffing.price+this.topping.price;
                 
-=======
-                return null;
-            }
-
-            Hamburger.prototype.calculatePrice = function (){
->>>>>>> 9d203d0fa9543850bf48635da2ff58b3cfa7158e
                 return sum;
             }
 
             Hamburger.prototype.calculateCalories = function (){
-<<<<<<< HEAD
                 let call=0;
                 if (this.topping2 !=undefined){
                     call=this.size.cal+this.stuffing.cal+this.topping.cal+this.topping2.cal;
@@ -147,18 +114,6 @@
             console.log(ham.getToppings());
             console.log(ham.calculatePrice());
             console.log(ham.calculateCalories());
-=======
-                return;
-            }
-
-            let ham= new Hamburger(Hamburger.SIZE_LARGE,Hamburger.STUFFING_CHEESE);
-            ham.addTopping(Hamburger.TOPPING_SPICE);
-            ham.addTopping(Hamburger.TOPPING_MAYO);
-            ham.removeTopping(Hamburger.TOPPING_SPICE);
-            console.log(ham.getSize());
-            ham.calculatePrice();
-            console.log(ham);
->>>>>>> 9d203d0fa9543850bf48635da2ff58b3cfa7158e
 
         </script>
     </body>
