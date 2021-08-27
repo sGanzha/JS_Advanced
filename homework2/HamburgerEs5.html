@@ -8,113 +8,138 @@
     </head>
     <body>
         <script>
-
-            function HamburgerException (message) {
-                this.message=message;
-                this.name='HamburgerException'
+            function HamburgerException(message) {
+                this.message = message;
+                this.name = "HamburgerException";
             }
 
-                Hamburger.SIZE_SMALL = {
-                    name:'small',
-                    price: 50,
-                    cal: 20
-                };
-                Hamburger.SIZE_LARGE = {
-                    name:'big',
-                    price: 100,
-                    cal: 40
-                };
-                Hamburger.STUFFING_CHEESE = {
-                    name:'cheese',
-                    price: 10,
-                    cal: 20
-                };
-                Hamburger.STUFFING_SALAD = {
-                    name:'salad',
-                    price: 20,
-                    cal: 5
-                };
-                Hamburger.STUFFING_POTATO = {
-                    name:'potato',
-                    price: 15,
-                    cal: 10
-                };
-                Hamburger.TOPPING_MAYO = {
-                    name:'Hamburger.TOPPING_MAYO',
-                    price: 15,
-                    cal: 0
-                };
-                Hamburger.TOPPING_SPICE = {
-                    name:'Hamburger.TOPPING_SPICE',
-                    price: 20,
-                    cal: 5
-                };
+            Hamburger.SIZE_SMALL = {
+                name: "small",
+                price: 50,
+                cal: 20,
+            };
+            Hamburger.SIZE_LARGE = {
+                name: "big",
+                price: 100,
+                cal: 40,
+            };
+            Hamburger.STUFFING_CHEESE = {
+                name: "cheese",
+                price: 10,
+                cal: 20,
+            };
+            Hamburger.STUFFING_SALAD = {
+                name: "salad",
+                price: 20,
+                cal: 5,
+            };
+            Hamburger.STUFFING_POTATO = {
+                name: "potato",
+                price: 15,
+                cal: 10,
+            };
+            Hamburger.TOPPING_MAYO = {
+                name: "Hamburger.TOPPING_MAYO",
+                price: 15,
+                cal: 0,
+            };
+            Hamburger.TOPPING_SPICE = {
+                name: "Hamburger.TOPPING_SPICE",
+                price: 20,
+                cal: 5,
+            };
 
-            function Hamburger(size,stuffing){
-                this.size=size,
-                this.stuffing=stuffing
+            function Hamburger(size, stuffing) {
+                (this.size = size), (this.stuffing = stuffing);
+
+                // Тут также не могу реализовать Exception
             }
 
-            Hamburger.prototype.addTopping = function (topping){   
-                    if(this.topping==undefined){
-                        this.topping=topping
-                    }else this.topping2=topping;
-                                      
-        }
-
-            Hamburger.prototype.removeTopping = function (topping){
-                if (this.topping ==topping){
-                    delete this.topping;
-                } else throw new HamburgerException('нет топинга для удаления');
+            Hamburger.prototype.addTopping = function (topping) {
+                // if (topping.name !="Hamburger.TOPPING_MAYO" || topping.name !="Hamburger.TOPPING_SPICE"){
+                //     throw new HamburgerException('не топинг')
+                // }  Не могу придумать тут Exception, данный не работает) Также не использовал try/catch по причине того что не буду обрабатывать ошибку
+                if (topping == this.topping) {
+                    throw new HamburgerException(
+                        `duplicate topping ${this.topping.name}`
+                    );
                 }
-                
-                    
-            Hamburger.prototype.getToppings = function (){
-                const arr=[];
-                if (this.topping !=null){
+                if (this.topping == undefined) {
+                    this.topping = topping;
+                } else this.topping2 = topping;
+            };
+
+            Hamburger.prototype.removeTopping = function (topping) {
+                if (this.topping == topping) {
+                    delete this.topping;
+                } else if (this.topping == topping) {
+                    delete this.topping2;
+                } else throw new HamburgerException("нет топинга для удаления");
+            };
+
+            Hamburger.prototype.getToppings = function () {
+                const arr = [];
+                if (this.topping != null) {
                     arr.push(this.topping.name);
-                }if(this.topping2 !=null){
+                }
+                if (this.topping2 != null) {
                     arr.push(this.topping2.name);
                 }
                 return arr;
-            }
+            };
 
-            Hamburger.prototype.getSize = function (){
-                if (this.size==Hamburger.SIZE_LARGE){
-                    return 'У вас большой бургер'
-                }else return 'У вас маленький бургер';
-            }
+            Hamburger.prototype.getSize = function () {
+                if (this.size == Hamburger.SIZE_LARGE) {
+                    return "У вас большой бургер";
+                } else return "У вас маленький бургер";
+            };
 
-            Hamburger.prototype.getStuffing = function (){
-
+            Hamburger.prototype.getStuffing = function () {
                 return `Ваша начинка ${this.stuffing.name}`;
-            }
+            };
 
-            Hamburger.prototype.calculatePrice = function (){
-                let sum=0;
-                if (this.topping2 !=undefined){
-                    sum= this.size.price + this.stuffing.price+this.topping.price+this.topping2.price;
-                }else sum= this.size.price + this.stuffing.price+this.topping.price;
-                
+            Hamburger.prototype.calculatePrice = function () {
+                let sum = 0;
+                if (this.topping2 != undefined) {
+                    sum =
+                        this.size.price +
+                        this.stuffing.price +
+                        this.topping.price +
+                        this.topping2.price;
+                } else
+                    sum =
+                        this.size.price +
+                        this.stuffing.price +
+                        this.topping.price;
+
                 return sum;
-            }
+            };
 
-            Hamburger.prototype.calculateCalories = function (){
-                let call=0;
-                if (this.topping2 !=undefined){
-                    call=this.size.cal+this.stuffing.cal+this.topping.cal+this.topping2.cal;
-                }else call=this.size.cal+this.stuffing.cal+this.topping.cal;
-                
+            Hamburger.prototype.calculateCalories = function () {
+                let call = 0;
+                if (this.topping2 != undefined) {
+                    call =
+                        this.size.cal +
+                        this.stuffing.cal +
+                        this.topping.cal +
+                        this.topping2.cal;
+                } else
+                    call = this.size.cal + this.stuffing.cal + this.topping.cal;
+
                 return call;
-            }
+            };
 
-            let ham= new Hamburger(Hamburger.SIZE_LARGE,Hamburger.STUFFING_CHEESE);
-            ham.addTopping(Hamburger.TOPPING_MAYO);
+            let ham = new Hamburger(
+                Hamburger.SIZE_SMALL,
+                Hamburger.STUFFING_CHEESE
+            );
+            // ham.addTopping(Hamburger.STUFFING_CHEESE);
+            ham.addTopping(Hamburger.TOPPING_SPICE);
             ham.addTopping(Hamburger.TOPPING_SPICE);
             console.log(ham.getToppings());
-            console.log(ham.calculatePrice());
-            console.log(ham.calculateCalories());
-
+            // console.log(ham.calculatePrice());
+            // console.log(ham.calculateCalories());
+            console.log(ham.getSize());
         </script>
     </body>
 </html>

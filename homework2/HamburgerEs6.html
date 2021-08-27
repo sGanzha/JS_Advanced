@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Hamburger {
+            constructor(size, stuffing) {
+                (this.size = size), (this.stuffing = stuffing);
+            }
+
+            addTopping(topping) {
+                if (this.topping == undefined) {
+                    this.topping = topping;
+                } else this.topping2 = topping;
+            }
+            removeTopping(topping) {
+                if (this.topping == topping) {
+                    delete this.topping;
+                } else
+                    throw new HamburgerException(
+                        "нет топинга для удаления"
+                    );
+            }
+
+            getToppings() {
+                const arr = [];
+                if (this.topping != null) {
+                    arr.push(this.topping.name);
+                }
+                if (this.topping2 != null) {
+                    arr.push(this.topping2.name);
+                }
+                return arr;
+            }
+
+            getSize() {
+                if (this.size == Hamburger.SIZE_LARGE) {
+                    return "У вас большой бургер";
+                } else return "У вас маленький бургер";
+            }
+            getStuffing() {
+                return `Ваша начинка ${this.stuffing.name}`;
+            }
+            calculatePrice() {
+                let sum = 0;
+                if (this.topping2 != undefined) {
+                    sum =
+                        this.size.price +
+                        this.stuffing.price +
+                        this.topping.price +
+                        this.topping2.price;
+                } else
+                    sum =
+                        this.size.price +
+                        this.stuffing.price +
+                        this.topping.price;
+
+                return sum;
+            }
+
+            calculateCalories() {
+                let call = 0;
+                if (this.topping2 != undefined) {
+                    call =
+                        this.size.cal +
+                        this.stuffing.cal +
+                        this.topping.cal +
+                        this.topping2.cal;
+                } else
+                    call =
+                        this.size.cal +
+                        this.stuffing.cal +
+                        this.topping.cal;
+
+                return call;
+            }
+        }
+    </script>
+</body>
+
+</html>
