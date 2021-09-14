@@ -7,12 +7,20 @@ const pizza = {
         sauce: '',
         price: null
     },
+    pizzaTopping:{
+        topping: '',
+        price: null
+    },
     get price() {
-        return pizza.pizzaSize.price + pizza.pizzaSauce.price;
+        return pizza.pizzaSize.price + pizza.pizzaSauce.price +
+        pizza.pizzaTopping.price;
     },
     get sauce() {
         return pizza.pizzaSauce.sauce; 
     },
+    get topping() {
+        return pizza.pizzaTopping.topping;
+    }
 };
 
 document.querySelector("#pizza").addEventListener("click", (e) => {});
@@ -48,6 +56,8 @@ labelArr.forEach((item) => {
 function showInfo() {
     document.querySelector(".price > p").innerHTML = "Ціна: " + pizza.price;
     document.querySelector(".sauces > p").innerHTML = "Соуси: " + pizza.sauce;
+    document.querySelector(".topings > p").innerHTML = "Топiнги: " + pizza.topping;
+    
 }
 
 // Выбираем соус
@@ -95,7 +105,7 @@ sauceArr.forEach( (item) => {
 
 
 // Выбираем топинги
-const [...toppingsArr] = document.querySelectorAll('.sauce');
+const [...toppingsArr] = document.querySelectorAll('.topping');
 toppingsArr.forEach( (item) => {
     item.addEventListener('dragstart', function (event){
         event.dataTransfer.effectAllowed = "move";
@@ -117,22 +127,38 @@ toppingsArr.forEach( (item) => {
         if (event.stopPropagation) event.stopPropagation();
         var id = event.dataTransfer.getData("Text");
         
-        if (id == "sauceClassic") {
-            pizza.pizzaSauce = {
-                sauce: "Кетчуп",
+        if (id == "moc1") {
+            pizza.pizzaTopping = {
+                topping: "Сир звичайний",
                 price: 25,
             };
-        } else if (id == "sauceBBQ") {
-            pizza.pizzaSauce = {
-                sauce: "BBQ",
+        } else if (id == "moc2") {
+            pizza.pizzaTopping = {
+                topping: "Сир фета",
                 price: 30,
             };
-        } else if (id == "sauceRikotta") {
-            pizza.pizzaSauce = {
-                sauce: "Рiкотта",
+        } else if (id == "moc3") {
+            pizza.pizzaTopping = {
+                topping: "Моцарелла",
                 price: 35,
             };
-        }
+        } else if (id == "telya") {
+            pizza.pizzaTopping = {
+                topping: "Телятина",
+                price: 35,
+            };
+        } else if (id == "vetch1") {
+            pizza.pizzaTopping = {
+                topping: "Помiдори",
+                price: 35,
+            };
+        } else if (id == "vetch2") {
+            pizza.pizzaTopping = {
+                topping: "Гриби",
+                price: 35,
+            };
+        } ;
+        
         showInfo();
     });
 });
