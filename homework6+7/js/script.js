@@ -25,11 +25,9 @@ const pizza = {
 
 document.querySelector("#pizza").addEventListener("click", (e) => {});
 
-// Выбираем размер
 const [...labelArr] = document.querySelectorAll("label > input");
 labelArr.forEach((item) => {
     item.addEventListener("click", (e) => {
-        //console.dir(item);
         if (item.checked) {
             const input = item;
             if (input.id == "small") {
@@ -60,7 +58,6 @@ function showInfo() {
     
 }
 
-// Выбираем соус
 const [...sauceArr] = document.querySelectorAll('.sauce');
 sauceArr.forEach( (item) => {
     item.addEventListener('dragstart', function (event){
@@ -71,14 +68,12 @@ sauceArr.forEach( (item) => {
     const target = document.querySelector('.table'); 
 
     target.addEventListener('dragover', function (event) {
-        // отменяем стандартное обработчик события dragover.
         if (event.preventDefault) event.preventDefault();
         return false;
     });
 
     target.addEventListener("drop", function (event) {
     console.dir(item);
-        // прекращаем дальнейшее распространение события по дереву DOM и отменяем возможный стандартный обработчик установленный браузером.
         if (event.preventDefault) event.preventDefault();
         if (event.stopPropagation) event.stopPropagation();
         var id = event.dataTransfer.getData("Text");
@@ -104,7 +99,6 @@ sauceArr.forEach( (item) => {
 });
 
 
-// Выбираем топинги
 const [...toppingsArr] = document.querySelectorAll('.topping');
 toppingsArr.forEach( (item) => {
     item.addEventListener('dragstart', function (event){
@@ -115,14 +109,12 @@ toppingsArr.forEach( (item) => {
     const target = document.querySelector('.table'); 
 
     target.addEventListener('dragover', function (event) {
-        // отменяем стандартное обработчик события dragover.
         if (event.preventDefault) event.preventDefault();
         return false;
     });
 
     target.addEventListener("drop", function (event) {
     console.dir(item);
-        // прекращаем дальнейшее распространение события по дереву DOM и отменяем возможный стандартный обработчик установленный браузером.
         if (event.preventDefault) event.preventDefault();
         if (event.stopPropagation) event.stopPropagation();
         var id = event.dataTransfer.getData("Text");
@@ -165,19 +157,18 @@ toppingsArr.forEach( (item) => {
 
 
 
-// FORM
-// проверяем input что вводится
+
 function validate( el ){
 
     function validateEl( reg, val ){
-        // Проверка на валидность
+        
         if (reg.test(val)){
             document.querySelector(`#error-${el.id}`).style.display = 'none';
         }else{
             document.querySelector(`#error-${el.id}`).style.display = 'block';
         }
         console.log(reg.test(val));
-        //console.log(val.search(reg) !== -1 ? true : false);
+        
     }
 
     
@@ -211,6 +202,17 @@ inputArr.filter( function(el){
         
     });
 });
+
+const banner = document.getElementById('banner');
+
+banner.addEventListener('mouseover', function( ){ 
+    let randomWidth = Math.floor(Math.random() * 10) + 1 + '%',
+        randomHeight = Math.floor(Math.random() * 10) + 1 +'%';
+        banner.style.bottom = randomWidth;
+        banner.style.right = randomHeight; 
+});
+
+
 
 
 
