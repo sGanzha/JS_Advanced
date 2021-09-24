@@ -14,64 +14,71 @@
 // #### Необязательные задания продвинутой сложности
 // - сделать каждое имя корабля ссылкой, и при клике на него должен появлятся вложенный список подробных характеристик корабля с такими данными: модель (поле `model`), класс корабля (поле `starship_class`), пасажировместимость (поле `passengers`) и место производства (поле `manufacturer`)
 // - Если имя корабля - Тысячелетний сокол (Millennium Falcon), то под списком кораблей вывести крупными буквами надпись: `Хан Соло стрелял первым!`
-window.addEventListener('DOMContentLoaded', function () {
-const tBody = document.querySelector('tbody'),
-button=document.getElementsByTagName('button');
+window.addEventListener('load', function () {
+    const tBody = document.querySelector('tbody'),
+    buton = document.getElementsByTagName("button");
     create = el => document.createElement(el);
 
-    // button.addEventListener('click',)
 
-function show(data) {
-    console.log(data.results);
-    data.results.forEach(element => {
-        if(element.starships.length>0){
-        const tr1= create('tr'),
-        btn=create('button'),
-        td1=create('td'),
-        td2=create('td');
-        td3=create('td');
-        td4=create('td');
-        td1.innerHTML=element.name;
-        td2.innerHTML=element.gender;
-        td3.innerHTML=element.homeworld;
-        btn.innerHTML='Список кораблей';
-        td4.append(btn);
-        tr1.append(td1,td2,td3,td4);
-        tBody.append(tr1);
-    }else {
-        const tr1= create('tr'),
-        td1=create('td'),
-        td2=create('td');
-        td3=create('td');
-        td1.innerHTML=element.name;
-        td2.innerHTML=element.gender;
-        td3.innerHTML=element.homeworld;
-        tr1.append(td1,td2,td3);
-        tBody.append(tr1);
+
+
+    function show(data) {
+        console.log(data.results);
+        data.results.forEach(element => {
+            if (element.starships.length > 0) {
+                const tr1 = create('tr'),
+                    btn = create('button'),
+                    td1 = create('td'),
+                    td2 = create('td');
+                td3 = create('td');
+                td4 = create('td');
+                td1.innerHTML = element.name;
+                td2.innerHTML = element.gender;
+                td3.innerHTML = element.homeworld;
+                btn.innerHTML = 'Список кораблей';
+                td4.append(btn);
+                tr1.append(td1, td2, td3, td4);
+                tBody.append(tr1);
+            } else {
+                const tr1 = create('tr'),
+                    td1 = create('td'),
+                    td2 = create('td');
+                td3 = create('td');
+                td1.innerHTML = element.name;
+                td2.innerHTML = element.gender;
+                td3.innerHTML = element.homeworld;
+                tr1.append(td1, td2, td3);
+                tBody.append(tr1);
+            }
+        });
+
     }
-    });
+
+    const tr = create('tr'),
+        pName = create('th'),
+        gender = create('th'),
+        homeworld = create('th');
+
+    pName.innerText = 'name';
+    gender.innerText = 'gender';
+    homeworld.innerText = 'homeworld';
+
+    tBody.append(tr);
+    tr.append(pName, gender, homeworld);
+
+    async function requestFetch(url) {
+        const pers = await fetch(url);
+        return pers.json();
+    }
+
+   
     
-}
 
-const tr = create('tr'),
-    pName = create('th'),
-    gender = create('th'),
-    homeworld = create('th');
 
-pName.innerText = 'name';
-gender.innerText = 'gender';
-homeworld.innerText = 'homeworld';
+    requestFetch('https://swapi.dev/api/people/').then((item) => {
+        show(item);
+    });
 
-tBody.append(tr);
-tr.append(pName, gender, homeworld);
-
-async function requestFetch(url) {
-    const pers = await fetch(url);
-    return pers.json();
-}
-
-requestFetch('https://swapi.dev/api/people/').then((item)=> {
-    show(item);
-});
+    
 
 });
